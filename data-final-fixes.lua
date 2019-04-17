@@ -33,7 +33,9 @@ end
 
 if settings.startup["enable-early-logistic-robots"].value then
 	for i, v in pairs(data.raw["technology"]["logistic-robotics"]["effects"]) do
-		data.raw["recipe"][v.recipe].enabled = true
+        	if data.raw["recipe"][v.recipe] then
+			data.raw["recipe"][v.recipe].enabled = true
+		end
 	end
 end
 if settings.startup["enable-early-construction-robots"].value then
@@ -43,19 +45,23 @@ if settings.startup["enable-early-construction-robots"].value then
 	data.raw["recipe"]["logistic-chest-storage"].enabled = true
 end
 if mods["recursive-blueprints"] then
-data.raw["recipe"]["blueprint-deployer"].enabled = true
-data.raw["recipe"]["blueprint-deployer"].ingredients = {
-      {"iron-chest", 3},
-      {"electronic-circuit", 1}
-}
-for i, v in pairs(data.raw["technology"]["circuit-network"]["effects"]) do
-data.raw["recipe"][v.recipe].enabled = true
-end
+	data.raw["recipe"]["blueprint-deployer"].enabled = true
+	data.raw["recipe"]["blueprint-deployer"].ingredients = {
+	      {"iron-chest", 3},
+	      {"electronic-circuit", 1}
+	}
+	for i, v in pairs(data.raw["technology"]["circuit-network"]["effects"]) do
+        	if data.raw["recipe"][v.recipe] then
+			data.raw["recipe"][v.recipe].enabled = true
+		end
+	end
 end
 
 if settings.startup["enable-early-logistic-system"].value then
 	for i, v in pairs(data.raw["technology"]["logistic-system"]["effects"]) do
-		data.raw["recipe"][v.recipe].enabled = true
+        	if data.raw["recipe"][v.recipe] then
+			data.raw["recipe"][v.recipe].enabled = true
+		end
 	end
 end
 
